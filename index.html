@@ -1,0 +1,1090 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffe9f2">
+  <title>little letters for love ♡</title>
+  <style>
+    :root {
+      --ink: #4b294b;
+      --line: #612f57;
+      font-family: "Comic Sans MS", "Trebuchet MS", sans-serif;
+      color: var(--ink);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    button:focus-visible {
+      outline: 3px solid #6734bb;
+      outline-offset: 4px;
+    }
+
+    body {
+      background: #ffe9f2;
+      background-image: radial-gradient(#ffbed5 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+    }
+
+    .app {
+      max-width: 1320px;
+      height: 100dvh;
+      min-height: 0;
+      margin: auto;
+      padding: clamp(9px, 1.6vh, 20px) clamp(18px, 3vw, 46px) clamp(8px, 1.4vh, 15px);
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: clamp(20px, 2.4vw, 31px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      white-space: nowrap;
+    }
+
+    .logo b {
+      color: #f35f99;
+    }
+
+    .main {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: clamp(8px, 1.7vh, 18px);
+    }
+
+    .intro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .tag {
+      margin-bottom: 5px;
+      padding: 5px 12px;
+      border: 2px solid var(--line);
+      border-radius: 50px;
+      background: #fff6a9;
+      box-shadow: 4px 4px 0 #e8a4bd;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .09em;
+      transform: rotate(-3deg);
+    }
+
+    .intro h1 {
+      margin: 4px 0 0;
+      font-size: clamp(36px, 5.2vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+    }
+
+    .greeting-line {
+      position: relative;
+      display: inline-block;
+      white-space: nowrap;
+      will-change: transform, opacity;
+    }
+
+    .pink-line {
+      color: #f65892;
+    }
+
+    .greeting-line.typing::after {
+      content: "|";
+      position: absolute;
+      top: 0;
+      right: -.22em;
+      color: #9a65d4;
+      animation: typingCursor .45s steps(1, end) infinite;
+    }
+
+    @keyframes typingCursor {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .board {
+      width: 100%;
+      max-width: 1160px;
+      height: 100%;
+      min-height: 0;
+      margin: 0 auto;
+      padding: clamp(10px, 1.5vw, 20px);
+      display: grid;
+      grid-template-rows: 30px minmax(0, 1fr);
+      gap: 8px;
+      border: 3px solid var(--line);
+      border-radius: 35px;
+      background: #fffdf8;
+      box-shadow: 11px 12px 0 #d98cae;
+    }
+
+    .board-head {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .pager {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .pager button {
+      min-width: 28px;
+      height: 28px;
+      border: 2px solid var(--line);
+      border-radius: 50px;
+      background: #ffe3ee;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .pager button:disabled {
+      opacity: .35;
+      cursor: default;
+    }
+
+    .pager small {
+      min-width: 30px;
+      text-align: center;
+      color: #b685a2;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .pager .shuffle {
+      height: 29px;
+      margin-right: 5px;
+      padding: 0 10px;
+      background: #fff0a6;
+      color: #8a507d;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .shuffle span {
+      margin-left: 3px;
+    }
+
+    .grid {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: clamp(10px, 1.25vw, 18px);
+    }
+
+    .card {
+      position: relative;
+      min-width: 0;
+      min-height: 0;
+      padding: clamp(12px, 1.4vw, 22px);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      border: 2.5px solid var(--line);
+      border-radius: clamp(17px, 1.8vw, 26px);
+      background: var(--color);
+      box-shadow: 5px 6px 0 var(--shade);
+      color: var(--ink);
+      text-align: left;
+      will-change: transform, opacity;
+    }
+
+    .card .icon {
+      font-size: clamp(31px, 3.5vw, 54px);
+      line-height: 1;
+      filter: drop-shadow(2px 2px 0 #fff9);
+    }
+
+    .card .open {
+      position: absolute;
+      top: 9px;
+      right: 10px;
+      font-size: 17px;
+    }
+
+    .card small {
+      display: block;
+      font-size: clamp(8px, .75vw, 11px);
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .card strong {
+      display: block;
+      font-size: clamp(22px, 2.25vw, 32px);
+      line-height: 1.1;
+      letter-spacing: -.06em;
+      overflow-wrap: anywhere;
+    }
+
+    .card.swirling,
+    .card.snapping {
+      pointer-events: none;
+      z-index: 3;
+      box-shadow: 0 0 25px 4px var(--shade), 5px 6px 0 var(--shade);
+    }
+
+    .card.settled {
+      will-change: auto;
+    }
+
+    .card.settled:hover {
+      z-index: 4;
+      animation: cardJiggle .17s ease-in-out infinite alternate;
+      box-shadow: 0 0 0 4px #fff9, 0 0 18px 7px var(--shade), 8px 12px 0 var(--shade);
+    }
+
+    .card:active {
+      animation: none;
+      transform: scale(.97);
+    }
+
+    @keyframes cardJiggle {
+      from {
+        transform: translateY(-4px) rotate(-2deg) scale(1.055);
+      }
+
+      to {
+        transform: translateY(-5px) rotate(2deg) scale(1.075);
+      }
+    }
+
+    .foot {
+      padding-top: 15px;
+      text-align: center;
+      color: #d8528d;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    #magic-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 8;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .overlay[hidden] {
+      display: none;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: grid;
+      place-items: center;
+      padding: clamp(10px, 2.5vw, 28px);
+      background: #61305ac9;
+    }
+
+    .modal {
+      position: relative;
+      width: min(680px, 100%);
+      height: min(740px, 100%);
+      min-height: 0;
+      padding: clamp(16px, 2.5vw, 30px);
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      overflow: hidden;
+      border: 3px solid var(--line);
+      border-radius: 34px;
+      background: #fffaf4;
+      box-shadow: 13px 14px 0 #3a193777;
+    }
+
+    .modal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .modal-top b {
+      font-size: clamp(16px, 2vw, 24px);
+      letter-spacing: -.06em;
+    }
+
+    .x {
+      width: 38px;
+      height: 38px;
+      border: 2px solid var(--line);
+      border-radius: 50%;
+      background: #ffc8dc;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .stage {
+      position: relative;
+      min-height: 0;
+      display: grid;
+      place-items: center;
+      perspective: 900px;
+    }
+
+    .env {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(330px, 65%);
+      aspect-ratio: 1.5;
+      transform: translate(-50%, -50%);
+      filter: drop-shadow(0 13px 10px #733e5a33);
+      transition: transform .7s .9s, opacity .5s 1.1s;
+    }
+
+    .env-back {
+      position: absolute;
+      inset: 0;
+      border: 2px solid var(--line);
+      border-radius: 9px;
+      background: #f7afc9;
+    }
+
+    .env-paper {
+      position: absolute;
+      right: 9%;
+      bottom: 6%;
+      left: 9%;
+      height: 83%;
+      display: grid;
+      place-items: center;
+      border: 2px solid #d79ab4;
+      border-radius: 7px;
+      background: #fffef9;
+      color: #d45d91;
+      font-size: 25px;
+      font-weight: 900;
+      transition: transform .7s .4s;
+    }
+
+    .env-front {
+      position: absolute;
+      inset: 0;
+      border-radius: 8px;
+      background: #ffd2e0;
+      clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .env-flap {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: #ff95b9;
+      clip-path: polygon(0 0, 100% 0, 50% 57%);
+      transform-origin: top;
+      backface-visibility: hidden;
+      transition: transform .55s;
+    }
+
+    .seal {
+      position: absolute;
+      top: 43%;
+      left: 50%;
+      z-index: 3;
+      width: 47px;
+      height: 47px;
+      display: grid;
+      place-items: center;
+      transform: translate(-50%, -50%);
+      border: 2px solid var(--line);
+      border-radius: 50%;
+      background: #f45c94;
+      color: white;
+      font-size: 24px;
+      transition: opacity .2s;
+    }
+
+    .note {
+      position: absolute;
+      width: min(490px, 92%);
+      max-height: 97%;
+      min-height: 0;
+      padding: clamp(18px, 3vw, 35px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: auto;
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      background: white;
+      box-shadow: 7px 8px 0 var(--accent);
+      opacity: 0;
+      transform: translateY(80px) scale(.8) rotate(-5deg);
+      pointer-events: none;
+      transition: opacity .55s 1.1s, transform .7s 1.1s;
+    }
+
+    .note small {
+      color: #d66391;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .13em;
+    }
+
+    .note h2 {
+      margin: 12px 0;
+      font-size: clamp(24px, 3vw, 37px);
+      line-height: 1.06;
+      letter-spacing: -.05em;
+    }
+
+    .note p {
+      margin: 0 0 10px;
+      color: #674f68;
+      font: clamp(12px, 1.45vw, 16px)/1.48 "Trebuchet MS", sans-serif;
+    }
+
+    .note .sign {
+      margin: 8px 0 0;
+      color: #d35b8c;
+      font-size: 14px;
+      font-weight: 900;
+      text-align: right;
+    }
+
+    .modal-foot {
+      display: flex;
+      justify-content: center;
+    }
+
+    .again {
+      padding: 9px 20px;
+      border: 2px solid var(--line);
+      border-radius: 50px;
+      background: #fff0a6;
+      box-shadow: 3px 4px 0 #efc671;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .overlay.play .env-flap {
+      z-index: 0;
+      transform: rotateX(180deg);
+    }
+
+    .overlay.play .seal {
+      opacity: 0;
+    }
+
+    .overlay.play .env-paper {
+      transform: translateY(-52%);
+    }
+
+    .overlay.play .env {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(.72);
+    }
+
+    .overlay.play .note {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotate(0);
+      pointer-events: auto;
+    }
+
+    @media (max-width: 850px) {
+      .app {
+        padding: 14px 18px 12px;
+      }
+
+      .main {
+        gap: 8px;
+      }
+
+      .intro h1 {
+        font-size: clamp(34px, 6vw, 56px);
+        margin-top: 3px;
+      }
+
+      .board {
+        padding: 12px;
+        border-radius: 23px;
+        box-shadow: 6px 7px 0 #d98cae;
+      }
+
+      .grid {
+        gap: 8px;
+      }
+
+      .card {
+        padding: 11px;
+        border-radius: 15px;
+        box-shadow: 3px 3px 0 var(--shade);
+      }
+
+      .card .icon {
+        font-size: clamp(29px, 4vw, 42px);
+      }
+
+      .card strong {
+        font-size: clamp(18px, 3vw, 26px);
+      }
+
+      .foot {
+        padding-top: 9px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .logo {
+        font-size: 22px;
+      }
+
+      .intro h1 {
+        font-size: clamp(33px, 8.4vw, 48px);
+      }
+
+      .tag {
+        padding: 4px 9px;
+        font-size: 8px;
+      }
+
+      .board {
+        padding: 9px;
+        grid-template-rows: 26px minmax(0, 1fr);
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(4, minmax(0, 1fr));
+      }
+
+      .card {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        padding: 9px;
+        box-shadow: 3px 4px 0 var(--shade);
+      }
+
+      .card .icon {
+        width: 38px;
+        flex: 0 0 38px;
+        font-size: clamp(25px, 6vh, 38px);
+      }
+
+      .card .open {
+        top: 6px;
+        right: 8px;
+        font-size: 13px;
+      }
+
+      .card small {
+        font-size: 7px;
+      }
+
+      .card strong {
+        font-size: clamp(16px, 4vw, 21px);
+      }
+
+      .foot {
+        font-size: 9px;
+      }
+
+      .modal {
+        height: min(720px, 100%);
+        padding: 15px;
+        border-radius: 23px;
+      }
+
+      .env {
+        width: 70%;
+      }
+
+      .note {
+        width: 97%;
+        max-height: 100%;
+        padding: 16px;
+      }
+
+      .note h2 {
+        font-size: clamp(23px, 6vw, 31px);
+      }
+
+      .note p {
+        margin-bottom: 7px;
+        font-size: clamp(11px, 2.65vw, 14px);
+        line-height: 1.35;
+      }
+
+      .shuffle span {
+        display: none;
+      }
+    }
+
+    @media (max-height: 650px) {
+      .app {
+        padding-top: 8px;
+        padding-bottom: 7px;
+      }
+
+      .main {
+        gap: 6px;
+      }
+
+      .tag,
+      .foot {
+        display: none;
+      }
+
+      .intro h1 {
+        font-size: clamp(29px, 4vw, 48px);
+      }
+
+      .board {
+        padding: 10px;
+        grid-template-rows: 23px minmax(0, 1fr);
+      }
+
+      .card .icon {
+        font-size: 25px;
+      }
+
+      .card strong {
+        font-size: clamp(15px, 2vw, 21px);
+      }
+
+      .note {
+        padding: 14px;
+      }
+
+      .note h2 {
+        margin: 5px 0;
+      }
+
+      .note p {
+        margin-bottom: 5px;
+        font-size: 11px;
+        line-height: 1.25;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="magic-canvas" aria-hidden="true"></canvas>
+
+  <div class="app">
+    <header class="top">
+      <div class="logo"><b>♡</b></div>
+    </header>
+
+    <main class="main">
+      <section class="intro" aria-label="Hi, kamusta ka? okay ka lang?">
+        <div class="tag">little letters for love ♡</div>
+        <h1 aria-label="Hi, kamusta ka? okay ka lang?">
+          <span class="greeting-line">hi, kamusta ka?</span><br>
+          <span class="greeting-line pink-line">okay ka lang?</span>
+        </h1>
+      </section>
+
+      <section class="board" aria-label="Mood letters">
+        <div class="board-head">
+          <nav class="pager" aria-label="Mood pages">
+            <button id="shuffle" class="shuffle" type="button" aria-label="Shuffle moods" title="Shuffle moods">⤨
+              <span>shuffle</span></button>
+            <button id="prev" type="button" aria-label="Previous moods">‹</button>
+            <small id="page-label">1 / 1</small>
+            <button id="next" type="button" aria-label="Next moods">›</button>
+          </nav>
+        </div>
+        <div class="grid" id="grid"></div>
+      </section>
+    </main>
+
+    <footer class="foot">made for every version of you</footer>
+  </div>
+
+  <div class="overlay" id="overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="note-title">
+      <div class="modal-top">
+        <b>special delivery for love 💌</b>
+        <button class="x" type="button" aria-label="Close letter">×</button>
+      </div>
+      <div class="stage">
+        <div class="env" aria-hidden="true">
+          <div class="env-back"></div>
+          <div class="env-paper">dear love ♡</div>
+          <div class="env-front"></div>
+          <div class="env-flap"></div>
+          <div class="seal">♥</div>
+        </div>
+        <article class="note">
+          <small id="note-label"></small>
+          <h2 id="note-title"></h2>
+          <div id="note-body"></div>
+          <p class="sign">made with ♡, your baby boy</p>
+        </article>
+      </div>
+      <div class="modal-foot">
+        <button class="again" type="button">← pick another mood</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- content.html replaces this published snapshot when you press Publish. -->
+  <script id="published-content" type="application/json">{"version":1,"moods":[{"id":"happy","label":"happy","icon":"☀","color":"#ffe16b","shade":"#e9bb45","title":"Keep this sunshine","posts":[{"id":"mmwgxwj795907w","title":"if i could wish you one thing","category":"a little note","emoji":"💌","text":"if there's one thing i could wish for you, it would be a life where you never have to question whether you deserve happiness.\n\nbecause you do.\n\nsana dumami pa ang mga araw na ganito. mga araw na puno ng tawa, unexpected surprises, little victories, and beautiful memories.\n\nand when those days come, i hope you never hold back your smile.\n\nyou deserve to be happy, not just today, but every day. ❤️"},{"id":"mmwgxvxm2li0fy","title":"munting paalala","category":"gentle reminder","emoji":"🍀","text":"huwag mong kalimutang ngumiti kahit walang dahilan.\nhuwag mong kalimutang tumawa kahit simpleng bagay lang ang nakakatawa.\nat higit sa lahat, huwag mong kalimutang i-enjoy ang buhay\ndi naman kailangan special lagi ang araw para maging happy \nminsan, ikaw mismo ang dahilan kung bakit nagiging espesyal ang isang araw."},{"id":"mmwgxukkq05x6i","title":"today is yours","category":"celebration","emoji":"🦋","text":"today, i hope you give yourself permission to be happy.\nno overthinking, no unnecessary worries, no feeling guilty for enjoying the good things.\nyou've got a whole life ahead of you, and there's still so much beauty waiting to find you.\nso go on, enjoy your day.\nlet happiness spoil you a little."},{"id":"mmwgxtuxeinq7v","title":"if only time could be held onto.","category":"love note","emoji":"🌸","text":"sana maalala mo kung gaano kaganda ang pakiramdam mo ngayon.\nsome moments are too precious to keep, so we keep them in your heart."},{"id":"mmwgxsjms08qrh","title":"look at you, glowing!","category":"pep talk","emoji":"✨","text":"look at you!\nang saya-saya mo naman today. sana makita mo rin ang sarili mo the way i see you — someone who deserves good things, beautiful moments, and genuine happiness.\n\nkeep going, keep growing, and keep that little spark alive.\n\nyou're doing just fine, friend."},{"id":"mmwgxrhto6ietp","title":"you make happiness look easy","category":"love note","emoji":"💗","text":"there's something about seeing you happy that makes everything feel a little lighter.\nkahit on ordinary na araw lang, you make it special kapag ngumingiti ka.\nand honestly, i hope you never run out of reasons to smile.\nif happiness had a face, i'd probably recognize yours first."},{"id":"mmwgxq8wpyyln4","title":"sana palaging ganito","category":"gentle reminder","emoji":"🌻","text":"sana hindi lang ngayon ang araw na masaya ka.\nsana bukas din, sa susunod na linggo, at sa mga araw na hindi mo inaasahang magiging maganda.\nyou don't always have to look forward to something big. sometimes, being happy right where you are is already enough."},{"id":"mmwgxjnysfajct","title":"a little sunshine","category":"a little note","emoji":"☀️","text":"just a little reminder that you make ordinary days feel a little less ordinary.\ni hope today gives you plenty of reasons to laugh, things to look forward to, and moments worth remembering.\nand if nobody tells you today...\nyou're someone's favorite kind of sunshine."},{"id":"mmwgxikgeox2l0","title":"happiness looks good on you","category":"celebration","emoji":"🌷","text":"i hope you know how lovely you look when you're happy.\nnot just because of your smile, but because there's something about you that makes even the simplest moments feel special. so keep that smile, okay? the world looks a little softer when you're happy."}]},{"id":"sad","label":"sad","icon":"☂","color":"#a9caff","shade":"#7e9de1","title":"It’s okay to feel it","posts":[{"id":"mmwgz8h44py6kc","title":"until things feel a little lighter again","category":"love note","emoji":"🌙","text":"kung hindi maganda ang araw mo ngayon, sana malaman mong hindi nito binabawasan ang ganda ng mga susunod pang araw na naghihintay sa'yo.\n\nmay mga panahong kailangan lang nating huminto, huminga, at maghintay hanggang maging magaan ulit ang lahat.\n\nand until then, i hope you remember this:\nyou are loved, you are appreciated, and you are never any less wonderful just because you're having a difficult day.\ntake your time. there's no rush. 🤍"},{"id":"mmwgz7ixz2uci4","title":"be gentle with yourself.","category":"a little note","emoji":"☂","text":"sana ngayong araw, piliin mong maging mabait sa sarili mo.\n\nkumain ka nang maayos, uminom ng tubig, magpahinga kapag kailangan, at huwag mong sisihin ang sarili mo sa mga bagay na hindi mo naman kontrolado.\nyou've been carrying enough.\nhindi mo kailangang dagdagan pa ang bigat sa pamamagitan ng pagiging mahigpit sa sarili mo.\n\nbe gentle with yourself."},{"id":"mmwgz6rgkgq67x","title":"for the days when you don't feel like talking.","category":"love note","emoji":"💌","text":"kung may araw na wala kang ganang makipag-usap, that's okay.\nhindi mo kailangang magpaliwanag palagi. hindi mo kailangang humanap ng tamang salita para lang maintindihan ka.\nyou can be quiet. you can take your space.\nand if you ever need someone to listen, i'll gladly lend you my ears.\nhindi lahat ng problema kailangang solusyunan. minsan, kailangan lang may makinig."},{"id":"mmwgz5o1bayron","title":"this feeling will pass","category":"comfort","emoji":"🌧️","text":"i know things might not feel right today.\npero sana huwag mong isipin na habang-buhay ka nang mananatili sa ganitong pakiramdam.\ndadating din 'yung araw na hindi na ga'no mabigat. at dadating ang umaga na mas madaling gumising, at gabi na mas payapa ang tulog.\n\nfor now, breathe.\nyou don't need to rush your healing. little by little, okay?"},{"id":"mmwgz4ebdj2s91","title":"hindi kailangang laging matatag","category":"gentle reminder","emoji":"🧸","text":"hindi nababawasan ang halaga mo dahil lang may mga bagay na hindi mo kayang kayanin ngayon.\n\nyou are human, after all.\n\nand you deserve the same kindness you give to everyone else."},{"id":"mmwgz3j4k9dqhn","title":"i'm still proud of you","category":"pep talk","emoji":"🌻","text":"even on your worst days, i'm still proud of you.\nkahit hindi mo natapos lahat ng plano mo, kahit hindi naging maganda ang takbo ng araw mo, kahit pakiramdam mo wala kang nagawang tama.\nyou still showed up. you still tried.\nand that means something.\nplease give yourself some credit. you're doing better than you think."},{"id":"mmwgz2qf4rts7b","title":"for a heart that feels tired.","category":"comfort","emoji":"🕊️","text":"may mga araw talagang kahit anong gawin mo, parang ang bigat-bigat pa rin.\nand that's okay.\nhindi rin kabawasan sa'yo ang magkaroon ng mga araw na hindi mo kayang ibigay ang best mo.\npahinga ka lang and bawi ka later."},{"id":"mmwgz0wd6r5lqn","title":"little progress. little progress","category":"gentle reminder","emoji":"🌷","text":"hey, don't be too hard on yourself.\nyou are allowed to grow at your own pace. please don't forget that."},{"id":"mmwgyzcx33vtgr","title":"warm hugs","category":"a little note","emoji":"🤍","text":"if you feel heavy today, sana kahit pa'no gumaan sa munting mensahe na 'to.\nhindi ko man kayang alisin lahat ng bigat na nararamdaman mo, \ngusto kong malaman mong hindi mo kailangang dalhin lahat nang mag-isa.\nkaya heto muna, giving you warm hugs\nno questions, walang pilitan. just hug.💌"},{"id":"mmwgywz9gasxlb","title":"you don't have to be okay","category":"comfort","emoji":"🫂","text":"you don't have to pretend that everything's okay.\nkung malungkot ka, malungkot ka. kung pagod ka, magpahinga ka. hindi mo kailangang piliting ngumiti para lang masabing okay ka.\ntake your time, okay?\nyou don't have to figure everything out today. one day at a time, friend."}]},{"id":"anxious","label":"anxious","icon":"✳","color":"#cbb4ff","shade":"#a082db","title":"One breath at a time","posts":[{"id":"mmwgzj9r04p4kl","title":"even when you're overthinking","category":"love note","emoji":"💌","text":"even when your mind gets messy, even when you ask too many questions, and even when you find yourself worrying about the smallest things...i hope you never feel like you're too much. you don't have to apologize for needing reassurance. you don't have to hide your worries just to seem okay. i hope you find comfort in knowing that you don't have to figure everything out alone. you've got this, friend. 🤍"},{"id":"mmwgzi8fy8fsqd","title":"a little reminder that you're safe","category":"comfort","emoji":"🧸","text":"if everything feels overwhelming right now, let's take a little pause.\nfeel your feet on the ground. relax your shoulders. take a slow breath.\nhindi mo kailangang harapin ang lahat ng iniisip mo nang sabay-sabay.\nlook around, you're here. this is the present moment.\nand right now, you only need to take care of this moment. nothing more."},{"id":"mmwgzhkpcc7fid","title":"dahan-dahan lang","category":"a little note","emoji":"🌻","text":"dahan-dahan lang, ha?\nhindi mo kailangang madaliin ang mga bagay-bagay. hindi mo kailangang magkaroon agad ng sagot sa bawat tanong.\nmay mga bagay na maiintindihan mo rin sa tamang panahon.\nfor now, take small steps. kahit mabagal, basta hindi mo kinakalimutang alagaan ang sarili mo.\nhindi ka nahuhuli. you're just taking your own path."},{"id":"mmwgzh0fqx3b5i","title":"your thoughts aren't always the truth","category":"comfort","emoji":"🌙","text":"just because your mind tells you something bad might happen doesn't mean it will.\nsometimes, our worries become so loud that we start believing every little thing they say.\npero, hindi lahat ng iniisip mo ay totoo. hindi lahat ng kinatatakutan mo ay mangyayari.\nbe gentle with your mind.\nit might be trying to protect you, but you don't have to believe every fear it creates."},{"id":"mmwgzfmka3agl9","title":"you don't have to have everything under control.","category":"gentle reminder","emoji":"☁️","text":"alam mo...\nnakakapagod talagang subukang kontrolin ang mga bagay na hindi naman natin kayang hawakan.\nyou can prepare, you can try, and you can do your best. pero pagkatapos no'n, kailangan mo ring matutong magtiwala sa proseso.\nhindi mo responsibilidad na siguraduhing magiging maayos ang lahat.\nsometimes, letting things unfold is enough."},{"id":"mmwgzep1qhat04","title":"what if things go right?","category":"pep talk","emoji":"🦋","text":"i know you've been thinking about everything that could go wrong.\nbut have you ever considered what if things actually go right?\nwhat if the things you're worried about turn out better than expected? what if there's nothing to fear after all?\nhindi naman laging masamang posibilidad ang naghihintay sa atin.\ngive yourself a chance to expect something good, too."},{"id":"mmwgzdydvi5rtg","title":"let your mind rest for now. there's time to think later.","category":"self-care","emoji":"🍵","text":"how about we give that pretty little head of yours a break?\numinom ka muna ng tubig, huminga nang malalim, at magpahinga kahit sandali.\nhindi mo kailangang habulin ang bawat iniisip mo.\nsometimes, your mind just needs a little silence.\nthe world can wait for a moment. take a breath."},{"id":"mmwgzcurig0sdt","title":"some things aren't meant to be held onto.","category":"gentle reminder","emoji":"🌷","text":"some things will work out, some things won't.\nand that's okay.\nyou are allowed to enjoy the present without constantly worrying about the future."},{"id":"mmwgzbugz306ux","title":"one thing at a time","category":"comfort","emoji":"🫂","text":"hey, breathe muna, okay?\nalam kong minsan ang daming pumapasok sa isip mo. yung mga what ifs, yung mga bagay na hindi pa nangyayari, at yung mga posibilidad na hindi mo naman kontrolado.\n\nbut listen...\nyou don't have to solve everything tonight. one thing at a time. one step at a time.\nyou'll get there. hindi kailangang sabay-sabay."}]},{"id":"lonely","label":"lonely","icon":"✿","color":"#ffb4cf","shade":"#e28aab","title":"You are not invisible","posts":[{"id":"mmwgzthid75k57","title":"somewhere, life is saving you a seat","category":"love note","emoji":"✨","text":"i hope you never let a lonely season convince you that this is all life has to offer.\n\nthere are conversations you'll laugh through, friendships you'll treasure, and moments when you'll feel so included that you won't even remember how lonely you once felt.\n\nhanggang dumating ang mga araw na 'yon, sana huwag mong isara ang puso mo sa posibilidad na may magagandang bagay pang darating.\n\nyou haven't met all the people who will make life feel a little warmer.\n\nand that's a beautiful thought, isn't it? 🤍"},{"id":"mmwgzrys16dv6o","title":"let's make a little memory","category":"a little note","emoji":"🍓","text":"what if today, we give ourselves something small to remember?\nmaybe a new dessert, a random walk, a picture of the sky, or a song you've never heard before.\nhindi kailangang may malaking ganap para magkaroon ng magandang alaala.\nsometimes, the smallest things become the stories we smile about later.\ngo make yourself a little memory."},{"id":"mmwgzr8fyow46x","title":"hindi ka mahirap mahalin","category":"pep talk","emoji":"🌷","text":"please don't mistake someone's absence for a reflection of your worth.\nhindi dahil may mga taong hindi marunong manatili ay mahirap ka nang mahalin.\nyou are not too quiet, too needy, or too much.\nhindi mo kailangang baguhin ang buong pagkatao mo para lang may gustong manatili sa tabi mo.\nthe right people won't make you feel like a burden for simply existing."},{"id":"mmwgzqfp2us97q","title":"a letter for the quiet nights","category":"comfort","emoji":"🌌","text":"sa mga gabing parang ang haba-haba ng oras, sana huwag mong kalimutang may bukas pang naghihintay.\n\nmay mga bagong kwentong hindi mo pa naririnig, mga lugar na hindi mo pa napupuntahan, at mga taong hindi mo pa nakikilala. there's still so much life waiting to happen."},{"id":"mmwgzpq3p6ty2p","title":"may puwang ka rito","category":"love note","emoji":"🏡","text":"sana alam mong may lugar ka sa buhay ng mga taong tunay na nagpapahalaga sa'yo.\n\nhindi mo kailangang maging masaya palagi para maging magandang kasama. hindi mo kailangang magdala ng kwento o magpatawa para lang maging welcome.\n\nyou can show up tired, quiet, or completely out of words.\n\nyou still deserve a seat at the table."},{"id":"mmwgzotx191bk2","title":"you don't have to chase company","category":"gentle reminder","emoji":"🦋","text":"you don't have to keep reaching out just to prove that you deserve someone's attention.\nhindi mo kailangang laging ikaw ang unang mangumusta, unang mag-message, o unang maghanap ng paraan para mapansin.you deserve connections that feel natural, too.\nyung hindi mo kailangang habulin para lang maramdaman mong gusto ka nilang makasama."},{"id":"mmwgzo889grufz","title":"learn to keep yourself company, too.","category":"self-care","emoji":"🪴","text":"kung wala kang makausap ngayon, maybe you can spend a little time with yourself.\n\nmagpatugtog ng paborito mong kanta, maghanda ng masarap na pagkain, o lumabas sandali para magpalit ng tanawin.\n\nhuwag mong hayaang maging kalaban mo ang katahimikan.\n\nyou deserve to enjoy your own company, too."},{"id":"mmwgznkh43mp6v","title":"may nakakaalala sa'yo","category":"a little note","emoji":"💌","text":"hi there.\n\njust a little reminder that somewhere in someone's day, you cross their mind.\n\nmay mga simpleng bagay na nagpapaalala sa kanila sa'yo. isang kanta, isang lugar, isang bagay na alam nilang magugustuhan mo.\n\nso even when the world feels quiet, remember that you're not as forgotten as you might think."},{"id":"mmwgzn0n0dyj9x","title":"even in a crowded room","category":"comfort","emoji":"🌙","text":"alam mo, may mga pagkakataong kahit napapalibutan ka ng maraming tao, pakiramdam mo mag-isa ka pa rin.\nand that's a strange kind of loneliness, isn't it? pero sana malaman mong hindi ibig sabihin no'n ay wala kang halaga sa mundo ng ibang tao.\n\nyou matter, even on the days nobody notices how quiet you've become."}]},{"id":"tired","label":"tired","icon":"☾","color":"#bde8d9","shade":"#87c8b2","title":"Rest is allowed","posts":[{"id":"mmwh04orsnlgmt","title":"nothing to prove tonight","category":"love note","emoji":"🏡","text":"for tonight, you don't have to be the strong one. hindi mo kailangang magpanggap na kaya mo pa kung pagod ka na talaga. you don't need to impress anyone, make everyone happy, or have everything figured out. i hope you find a little corner of the world where you can just be yourself.\n\nand if today wasn't kind to i hope tomorrow treats you a little better. 🤍"},{"id":"mmwh03tio3p32y","title":"you can take the longer route","category":"pep talk","emoji":"🌻","text":"hindi naman kailangang mabilis ang lahat para makarating ka sa gusto mong puntahan.\n\nkung kailangan mong magpahinga, magpahinga ka. kung kailangan mong magsimula ulit, gawin mo.\n\nthere's no shame in taking the longer route.\n\nmas mahalaga pa ring makarating ka nang hindi tuluyang nauubos ang sarili mo sa kakamadali.\n\ni hope you remember that."},{"id":"mmwh03d3z4bxvv","title":"little things count, too","category":"a little note","emoji":"🍓","text":"today doesn't have to be memorable to be worth remembering. maybe you finally finished a meal you enjoyed. maybe you found a song that made the afternoon better. maybe you simply managed to get through something difficult.\n\nsmall things matter.\nhuwag mong maliitin ang mga sandaling nakapagbigay sa'yo ng kaunting ginhawa.\nthey count, too."},{"id":"mmwh02re61ppqs","title":"you don't need to entertain anyone","category":"comfort","emoji":"🎧","text":"you can decline invitations, skip unnecessary conversations, and enjoy a little silence without explaining yourself. there are some days, you just want to exist without having to interact. and honestly, that's perfectly fine."},{"id":"mmwh01zztxc9wv","title":"a little less pressure","category":"gentle reminder","emoji":"🌷","text":"i hope you stop treating every unfinished thing as a personal failure. may mga plano talagang hindi nasusunod. may mga araw na kulang ang oras, at may mga pagkakataong hindi sapat ang energy natin.it happens. hindi kailangang perfect ang progress para masabing may narating ka. give yourself some room to be imperfect."},{"id":"mmwh018rgdli67","title":"hindi lahat ng laban, kailangan mong salihan","category":"pep talk","emoji":"🕊️","text":"you don't have to respond to every problem that comes your way.\n\nhindi lahat ng argumento kailangang panalunan. hindi lahat ng opinyon kailangang sagutin. at hindi lahat ng bagay ay dapat mong personal na dalhin.\n\nchoose your battles, friend.\n\nmay mga pagkakataong ang pinakamagandang desisyon ay ang hindi na makisali.\n\nprotect your peace without feeling guilty."},{"id":"mmwh00qo1w4yst","title":"you deserve a slow morning","category":"comfort","emoji":"☕","text":"sana magkaroon ka ng umagang hindi ka kailangang magmadali.\n\nyung gigising ka nang walang hinahabol na oras, makakapag-almusal nang maayos, at mapapanood lang ang liwanag na pumapasok sa bintana.\n\nnothing urgent. nothing demanding.\n\njust you, your favorite drink, and a morning that doesn't ask too much from you.\n\ni hope you get that kind of day soon."},{"id":"mmwh00b7h5htio","title":"let's cancel the unnecessary","category":"a little note","emoji":"🧸","text":"if today feels like too much, maybe we can cancel a few things.\n\nyung unnecessary worries, yung pressure na kailangan mong sumabay, at yung expectation na dapat lagi kang available.\n\nyou don't owe the world a performance every single day.\n\nfor once, let your schedule have a little breathing room."},{"id":"mmwgzzxsbeygdw","title":"hindi ka makina","category":"gentle reminder","emoji":"🪴","text":"hindi ka naman makina para laging may energy, 'di ba?\n\nmay mga araw talagang mabilis maubos ang lakas natin, kahit wala naman tayong masyadong nagawa.\n\nso please, don't measure your worth by how much you accomplish.\n\nhindi ka less valuable kapag mabagal ka ngayon.\n\nyou're a person. you're allowed to have limits."},{"id":"mmwgzzi2sqvipy","title":"you can clock out now","category":"self-care","emoji":"🌙","text":"you've done enough for today.\nyou can put down your responsibilities for a little while. hindi naman mawawala ang mga kailangan mong gawin kung bukas mo na sila harapin.\nclose those tabs in your head, too.\nyou deserve a little time na wala kang kailangang habulin, patunayan, o tapusin.\nwork can wait. your well-being shouldn't."},{"id":"tired-1","title":"rest is allowed","category":"comfort","emoji":"☾","text":"You’ve carried enough for today. Hindi mo kailangang i-earn ang pahinga. Put down what can wait."},{"id":"tired-3","title":"less worthy","category":"a little note","emoji":"☀","text":"you are more than your to-do list. a quiet evening does not make you less worthy."}]},{"id":"proud","label":"proud","icon":"★","color":"#ffd095","shade":"#e8a963","title":"You did that!","posts":[{"id":"mmwh0hddmhuh1z","title":"so proud of you","category":"love note","emoji":"💖","text":"i am so proud of i know you can do it! i know. i always believed in you!"},{"id":"mmwh0g8ct2w02g","title":"this is worth remembering","category":"a little note","emoji":"📸","text":"if you could keep one thing from today, i hope it's the feeling of knowing that you did something you're proud of. remember how it feels. remember the smile, the excitement, and that little moment when you realized you actually made it. because someday, when things get difficult again, \ni hope you can look back at this day and say: \n\"i've done good things before. i know i can do them again.\"\nand you absolutely can. 🤍"},{"id":"mmwh0fko8dsbi1","title":"sana makita mo ang nakikita ko","category":"love note","emoji":"💌","text":"sana minsan, makita mo rin ang sarili mo mula sa pananaw ng taong nagmamalasakit sa'yo. not just the things you still want to improve, but also the things you've already done beautifully. ang dami mong magandang katangian na baka nasanay ka na lang kaya hindi mo na napapansin. and i hope you never become so focused on becoming better that you forget to appreciate who you already are."},{"id":"mmwh0ewwc5g30l","title":"a toast to the little victories","category":"celebration","emoji":"🥂","text":"here's to the things nobody else noticed. the small improvements, the quiet discipline, the decisions you made for yourself, and the days you chose to keep trying."},{"id":"mmwh0e4qhlbyjc","title":"look at the person standing here today.","category":"gentle reminder","emoji":"✨","text":"your efforts have taken you somewhere."},{"id":"mmwh0dpcoa5nev","title":"hindi sayang ang lahat","category":"a little note","emoji":"🌱","text":"sana kapag binalikan mo ang mga panahong nahirapan ka, hindi puro sakit ang maalala mo.\nsana makita mo rin kung paano ka natuto, kung paano ka nagpatuloy, at kung gaano karaming bagay ang kaya mo na ngayon."},{"id":"mmwh0d5kaqx5t1","title":"the person you're becoming","category":"love note","emoji":"🦋","text":"one thing i hope you notice about yourself is how much you've changed.\nnot just in the things you've achieved, but in the way you think, decide, and carry yourself.\nmay mga bagay ka nang mas naiintindihan ngayon. may mga bagay ka na ring hindi na kailangang patunayan.\ni genuinely hope you like the person you're becoming.\nbecause there's something beautiful about growing into yourself."},{"id":"mmwh0cp1gvkrdc","title":"ang galing mo pala, ha?","category":"celebration","emoji":"🎀","text":"well, well, look who's doing amazing!\nalam mo, minsan nakakatuwang makita kang nagagawa ang mga bagay na dati sigurong iniisip mo lang.\nand i hope you don't just brush it off with a simple \"okay lang.\"\nLOVE, THAT'S YOUR WIN!\ngive yourself a little pat on the back. deserve mo 'yan."},{"id":"mmwh0c6ee2px2q","title":"own your moment","category":"pep talk","emoji":"✨","text":"don't be shy about being proud of yourself.\nyou worked for it. you earned it. and you have every right to enjoy the moment.\nhindi mo kailangang paliitin ang achievement mo para lang hindi magmukhang nagyayabang.\nthere's a difference between being arrogant and recognizing your own hard work.\nso stand tall. this one's yours."},{"id":"mmwh0bv35d82d4","title":"your younger self would be happy","category":"a little note","emoji":"🧸","text":"i wonder what your younger self would say if they could see you today.\n\nmaybe they'd be surprised by how much you've learned, how many things you've overcome, and how different life looks now.\n\nor maybe they'd simply smile.\n\nsana ma-appreciate mo rin ang sarili mo the way that younger self would.\n\nyou've given them plenty of reasons to be proud."},{"id":"mmwh0bjczq2avn","title":"hindi maliit ang narating mo","category":"gentle reminder","emoji":"🌻","text":"sana hindi mo minamaliit ang mga bagay na pinaghirapan mong makuha.\n\nkahit simpleng achievement lang 'yan para sa iba, alam mo kung gaano karaming oras, pagod, at tiyaga ang inilaan mo.\n\nhindi kailangang malaking bagay para maging proud ka sa sarili mo.\n\nkung mahalaga sa'yo, mahalaga 'yan.\n\nso go ahead, celebrate your little victory."},{"id":"mmwh0744in4d95","title":"look how far you've come","category":"celebration","emoji":"🌷","text":"take a second and look at where you are now. remember the things you once thought you couldn't do? look at you, doing them one by one. maybe the journey wasn't always pretty, and maybe there were moments when you doubted yourself.\n\nbut here you are.\n\ni hope you give yourself the credit you've always deserved. you've come a long way, and that's worth celebrating."},{"id":"proud-10","title":"you did that!","category":"a little note","emoji":"✨","text":"proud of you for trying, learning, and getting here. Please be proud of yourself too. ♡"}]},{"id":"overwhelmed","label":"overwhelmed","icon":"✦","color":"#c9d7ff","shade":"#9aade3","title":"One thing at a time","posts":[{"id":"mmwh0trng479z2","title":"you can put it down","category":"comfort","emoji":"🕯️","text":"i hope you know that you don't have to keep holding on to everything just because you've been holding it for so long. yung expectations, disappointments, unfinished plans, at mga bagay na paulit-ulit mong iniisip... you can put some of them down.\n\nlet yourself have a lighter day.\nyou deserve that, too. 🤍"},{"id":"mmwh0sj2yfuz6u","title":"one mess at a time","category":"pep talk","emoji":"🧹","text":"baka hindi natin kayang ayusin lahat ngayon. maybe some things will remain unfinished, some plans will have to change, and some days will be messier than expected. but that's life, isn't it?\n\nhindi kailangang maging maayos ang lahat para makausad ka. pick up what you can. leave what you can't. we'll deal with the rest when we're ready."},{"id":"mmwh0rp8hsxy8y","title":"hindi mo kailangang maging lahat","category":"gentle reminder","emoji":"🧩","text":"you don't have to be a good friend, a good partner, and a perfect version of yourself all at the same time. you are allowed to just be yourself outside all those expectations.\n\nanda, you're a person before you're anyone else's anything."},{"id":"mmwh0r23bw6yu7","title":"a little room to breathe","category":"a little note","emoji":"🪟","text":"if i could give you anything right now, i'd give you a quiet afternoon.\njust an open window, a comfortable place to sit, and enough time to remember what it feels like to do absolutely nothing. you deserve a life that isn't always in a hurry."},{"id":"mmwh0qaj6tg75v","title":"you're allowed to say no","category":"pep talk","emoji":"🌻","text":"kung wala ka nang energy, sabihin mo. kung hindi mo kaya, maging honest ka.\nhindi mo kailangang ubusin ang sarili mo para lang walang madisappoint.\nyou can be kind and still have boundaries.\nthose two things can exist together."},{"id":"mmwh0psvdyj0ky","title":"leave some things for tomorrow","category":"comfort","emoji":"🌙","text":"may mga bagay na mas madaling harapin kapag hindi ka na pagod.\nso please, don't turn your entire evening into another deadline.\nlet tomorrow have its own responsibilities."},{"id":"mmwh0p1o2s8dr5","title":"indi ka kailangang magmadali sumagot","category":"a little note","emoji":"📩","text":"you are allowed to take your time before making a decision.\nit's okay to say, \"let me think about it first.\"\nyou don't owe anyone a decision made out of pressure."},{"id":"mmwh0olcr4zgsc","title":"close a few tabs","category":"self-care","emoji":"💻","text":"some are important, some can wait, and some shouldn't even be open in the first place.\nmaybe it's time to close a few."},{"id":"mmwh0o3whyqqbg","title":"hindi mo kailangang saluhin lahat","category":"gentle reminder","emoji":"🪷","text":"you can care without carrying everything. you can help without forgetting yourself."},{"id":"mmwh0nkjr936pz","title":"let's sort things out later","category":"comfort","emoji":"🫂","text":"i know there's probably a lot going on in your head right now. let the thoughts settle first. we can figure things out when everything feels a little less crowded."}]}]}</script>
+  <script>
+    // content.html writes this snapshot into the script above when you publish.
+    const published = JSON.parse(document.querySelector("#published-content").textContent);
+    let moods = Array.isArray(published?.moods) ? [...published.moods] : [];
+    const lastPostByMood = new Map();
+
+    const grid = document.querySelector("#grid");
+    const overlay = document.querySelector("#overlay");
+    const modal = overlay.querySelector(".modal");
+    const canvas = document.querySelector("#magic-canvas");
+    const context = canvas.getContext("2d");
+    const lines = [...document.querySelectorAll(".greeting-line")].map((node) => ({
+      node,
+      fullText: node.textContent.trim(),
+    }));
+
+    const PAGE_SIZE = 8;
+    const ORBIT_MS = 1750;
+    const SNAP_MS = 750;
+    const STAGGER_MS = 65;
+    const SPARKLE_MS = 3250;
+    let page = 0;
+    let motionFrame = 0;
+    let returnFocus = null;
+
+    function makeCard(mood) {
+      const button = document.createElement("button");
+      button.className = "card";
+      button.type = "button";
+      button.dataset.id = mood.id;
+      button.setAttribute("aria-label", `Open letter for when you feel ${mood.label}`);
+      button.style.setProperty("--color", /^#[0-9a-f]{6}$/i.test(mood.color) ? mood.color : "#ffd5e5");
+      button.style.setProperty("--shade", /^#[0-9a-f]{6}$/i.test(mood.shade) ? mood.shade : "#e8a7c3");
+
+      const icon = document.createElement("span");
+      icon.className = "icon";
+      icon.setAttribute("aria-hidden", "true");
+      icon.textContent = mood.icon;
+
+      const caption = document.createElement("span");
+      const hint = document.createElement("small");
+      hint.textContent = "open when you feel";
+      const label = document.createElement("strong");
+      label.textContent = mood.label;
+      caption.append(hint, label);
+
+      const arrow = document.createElement("span");
+      arrow.className = "open";
+      arrow.setAttribute("aria-hidden", "true");
+      arrow.textContent = "↗";
+      button.append(icon, caption, arrow);
+      return button;
+    }
+
+    function renderPage() {
+      const pageCount = Math.max(1, Math.ceil(moods.length / PAGE_SIZE));
+      page = Math.min(page, pageCount - 1);
+      grid.replaceChildren(...moods.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE).map(makeCard));
+      document.querySelector("#page-label").textContent = `${page + 1} / ${pageCount}`;
+      document.querySelector("#prev").disabled = page === 0;
+      document.querySelector("#next").disabled = page === pageCount - 1;
+    }
+
+    function choosePost(mood) {
+      const posts = mood.posts || [];
+      if (!posts.length) return null;
+      let index = Math.floor(Math.random() * posts.length);
+      const previous = lastPostByMood.get(mood.id);
+      if (posts.length > 1 && index === previous) {
+        index = (index + 1 + Math.floor(Math.random() * (posts.length - 1))) % posts.length;
+      }
+      lastPostByMood.set(mood.id, index);
+      return posts[index];
+    }
+
+    function openLetter(id, trigger) {
+      const mood = moods.find((item) => item.id === id);
+      const post = mood && choosePost(mood);
+      if (!post) return;
+
+      returnFocus = trigger;
+      modal.style.setProperty("--accent", mood.color);
+//      document.querySelector("#note-label").textContent =
+//        `OPEN WHEN YOU FEEL ${mood.label.toUpperCase()} • ${(post.category || "a little note").toUpperCase()}`; 
+      document.querySelector("#note-title").textContent = `${post.emoji || mood.icon} ${post.title || mood.title}`;
+      const paragraph = document.createElement("p");
+      paragraph.textContent = post.text;
+      document.querySelector("#note-body").replaceChildren(paragraph);
+
+      overlay.hidden = false;
+      overlay.classList.remove("play");
+      void overlay.offsetWidth;
+      overlay.classList.add("play");
+      overlay.querySelector(".x").focus();
+    }
+
+    function closeLetter() {
+      overlay.classList.remove("play");
+      overlay.hidden = true;
+      returnFocus?.focus();
+    }
+
+    function shuffleMoods() {
+      const before = moods.map((mood) => mood.id).join("|");
+      for (let i = moods.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [moods[i], moods[j]] = [moods[j], moods[i]];
+      }
+      if (moods.length > 1 && moods.map((mood) => mood.id).join("|") === before) {
+        moods.push(moods.shift());
+      }
+      page = 0;
+      renderPage();
+      animateCards();
+    }
+
+    function resizeCanvas() {
+      if (!context) return;
+      const ratio = Math.min(devicePixelRatio || 1, 2);
+      canvas.width = Math.round(innerWidth * ratio);
+      canvas.height = Math.round(innerHeight * ratio);
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    }
+
+    function makeSparkles() {
+      const colors = ["#ffd85d", "#f369aa", "#ac8ff0"];
+      return Array.from({length: 54}, (_, index) => ({
+        x: Math.random() * innerWidth,
+        y: Math.random() * innerHeight,
+        radius: 2 + Math.random() * 4,
+        phase: Math.random() * 7,
+        speed: .35 + Math.random() * .75,
+        color: colors[index % colors.length],
+      }));
+    }
+
+    function drawSparkles(elapsed, pieces) {
+      if (!context) return;
+      context.clearRect(0, 0, innerWidth, innerHeight);
+      if (elapsed > SPARKLE_MS) return;
+
+      const seconds = elapsed / 1000;
+      const fade = Math.min(1, seconds * 1.8, Math.max(0, (SPARKLE_MS / 1000 - seconds) * 2));
+      for (const piece of pieces) {
+        const x = piece.x + Math.sin(seconds * piece.speed + piece.phase) * 30;
+        const y = piece.y - seconds * (12 + piece.speed * 13) + Math.cos(seconds + piece.phase) * 13;
+        const size = piece.radius * (.75 + .3 * Math.sin(seconds * 4 + piece.phase));
+        context.globalAlpha = fade * (.4 + .5 * Math.sin(seconds * 3 + piece.phase) ** 2);
+        context.fillStyle = piece.color;
+        context.beginPath();
+        context.moveTo(x, y - size * 1.8);
+        context.quadraticCurveTo(x + size * .3, y - size * .3, x + size * 1.8, y);
+        context.quadraticCurveTo(x + size * .3, y + size * .3, x, y + size * 1.8);
+        context.quadraticCurveTo(x - size * .3, y + size * .3, x - size * 1.8, y);
+        context.quadraticCurveTo(x - size * .3, y - size * .3, x, y - size * 1.8);
+        context.fill();
+      }
+      context.globalAlpha = 1;
+    }
+
+    function prepareTypewriter() {
+      for (const line of lines) {
+        line.node.textContent = line.fullText;
+        line.node.style.minWidth = "";
+        line.node.style.minWidth = `${line.node.getBoundingClientRect().width}px`;
+        line.node.textContent = "";
+        line.node.classList.add("typing");
+      }
+    }
+
+    function animateTypewriter(elapsed) {
+      const starts = [180, 1050];
+      for (const [index, line] of lines.entries()) {
+        const progress = Math.max(0, Math.min(1, (elapsed - starts[index]) / 900));
+        line.node.textContent = line.fullText.slice(0, Math.floor(progress * line.fullText.length));
+        line.node.classList.toggle("typing", progress < 1 && elapsed >= starts[index]);
+      }
+    }
+
+    const introItems = [
+      [".logo", -70, -35, -10, 0, 700],
+      [".tag", 75, -55, 12, 80, 780],
+      [".greeting-line", 0, 0, 0, 100, 250],
+      [".pink-line", 0, 0, 0, 850, 250],
+      [".board", 0, 18, 0, 0, 600],
+      [".foot", 0, 22, 0, 1000, 650],
+    ].map(([selector, x, y, angle, start, duration]) => ({
+      node: document.querySelector(selector), x, y, angle, start, duration,
+    }));
+
+    function animateIntro(elapsed) {
+      for (const item of introItems) {
+        const progress = Math.max(0, Math.min(1, (elapsed - item.start) / item.duration));
+        const eased = 1 - (1 - progress) ** 3;
+        const floating = Math.sin(elapsed * .004 + item.start) * 9 * (1 - eased);
+        item.node.style.opacity = progress;
+        item.node.style.transform =
+          `translate3d(${item.x * (1 - eased)}px, ${item.y * (1 - eased) + floating}px, 0) ` +
+          `rotate(${item.angle * (1 - eased)}deg) scale(${.78 + eased * .22})`;
+      }
+    }
+
+    function animateCards(includeIntro = false) {
+      cancelAnimationFrame(motionFrame);
+      const cards = [...grid.querySelectorAll(".card")];
+      if (!cards.length) return;
+
+      const positions = cards.map((card) => card.getBoundingClientRect());
+      const centerX = innerWidth / 2;
+      const centerY = innerHeight / 2;
+      const radiusX = Math.min(innerWidth * .27, 290);
+      const radiusY = Math.min(innerHeight * .25, 210);
+      const sparkles = makeSparkles();
+      let started;
+
+      cards.forEach((card) => {
+        card.classList.remove("settled", "snapping");
+        card.classList.add("swirling");
+        card.style.opacity = "0";
+        card.style.transform = "scale(.45)";
+      });
+
+      if (includeIntro) {
+        introItems.forEach(({node}) => {
+          node.style.opacity = "0";
+          node.style.transform = "translateY(30px)";
+        });
+        prepareTypewriter();
+      }
+
+      function frame(now) {
+        started ??= now;
+        const elapsed = now - started;
+        if (includeIntro) {
+          animateIntro(elapsed);
+          animateTypewriter(elapsed);
+        }
+        drawSparkles(elapsed, sparkles);
+
+        cards.forEach((card, index) => {
+          const rect = positions[index];
+          const orbitProgress = Math.min(elapsed, ORBIT_MS) / ORBIT_MS;
+          const angle = index / cards.length * Math.PI * 2 + orbitProgress * Math.PI * 2.4;
+          const wave = Math.sin(elapsed * .003 + index) * 22;
+          const orbitX = centerX + Math.cos(angle) * (radiusX + wave);
+          const orbitY = centerY + Math.sin(angle) * (radiusY + wave);
+          const dx = orbitX - (rect.left + rect.width / 2);
+          const dy = orbitY - (rect.top + rect.height / 2);
+          const tilt = Math.sin(angle * 1.3) * 22;
+          const scale = .43 + Math.sin(elapsed * .004 + index) * .055;
+
+          const snap = Math.max(0, Math.min(1, (elapsed - ORBIT_MS - index * STAGGER_MS) / SNAP_MS));
+          const eased = 1 - (1 - snap) ** 3;
+          const x = dx * (1 - eased);
+          const y = dy * (1 - eased);
+          const rotation = tilt * (1 - eased);
+          const size = scale + (1 - scale) * eased;
+          card.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rotation}deg) scale(${size})`;
+          card.style.opacity = Math.min(1, elapsed / 500);
+          if (snap > 0) card.classList.replace("swirling", "snapping");
+          if (snap === 1) card.classList.replace("snapping", "settled");
+        });
+
+        const total = Math.max(SPARKLE_MS, ORBIT_MS + SNAP_MS + (cards.length - 1) * STAGGER_MS);
+        if (elapsed < total) {
+          motionFrame = requestAnimationFrame(frame);
+        } else {
+          cards.forEach((card) => {
+            card.classList.remove("swirling", "snapping");
+            card.classList.add("settled");
+            card.style.transform = "";
+            card.style.opacity = "";
+          });
+          context?.clearRect(0, 0, innerWidth, innerHeight);
+        }
+      }
+
+      motionFrame = requestAnimationFrame(frame);
+    }
+
+    grid.addEventListener("click", (event) => {
+      const card = event.target.closest(".card");
+      if (card) openLetter(card.dataset.id, card);
+    });
+    document.querySelector("#shuffle").addEventListener("click", shuffleMoods);
+    document.querySelector("#prev").addEventListener("click", () => {
+      page--;
+      renderPage();
+      animateCards();
+    });
+    document.querySelector("#next").addEventListener("click", () => {
+      page++;
+      renderPage();
+      animateCards();
+    });
+    overlay.querySelector(".x").addEventListener("click", closeLetter);
+    overlay.querySelector(".again").addEventListener("click", closeLetter);
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) closeLetter();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (overlay.hidden) return;
+      if (event.key === "Escape") closeLetter();
+      if (event.key !== "Tab") return;
+      const first = overlay.querySelector(".x");
+      const last = overlay.querySelector(".again");
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+    addEventListener("resize", resizeCanvas);
+
+    resizeCanvas();
+    renderPage();
+    animateCards(true);
+  </script>
+</body>
+
+</html>
